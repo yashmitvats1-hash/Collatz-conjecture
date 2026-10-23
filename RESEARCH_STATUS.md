@@ -111,7 +111,7 @@ A correction to Gemini's report: the claimed universal affine upper bound `(3^u 
 
 A true general obstruction survives: for odd `n`, let `ν=v₂(n+1)`. The first `2ν` Collatz steps follow an explicit expansion pattern and yield
 `τ(n) ≥ ceil((1+log₂ 3)ν)`,
-where `τ(n` is the first strict-descent time, with `τ=∞` if no strict descent exists. Hence no single finite uniform horizon bounds the time to descent for all starts. This does **not** rule out proofs with an input-dependent horizon and does not show any particular orbit fails to descend; see proofs/UNBOUNDED_STOPPING_TIME.md.
+where `τ(n)` is the first strict-descent time, with `τ=∞` if no strict descent exists. Hence no single finite uniform horizon bounds the time to descent for all starts. This does **not** rule out proofs with an input-dependent horizon and does not show any particular orbit fails to descend; see proofs/UNBOUNDED_STOPPING_TIME.md.
 
 ## Current research tracks
 
