@@ -26,6 +26,7 @@ See:
 - [Agent kickoff and work orders](AGENT_ASSIGNMENTS.md)
 - [Argument ledger](ARGUMENT_LEDGER.md)
 - [DeepSeek report audit](proof_audit/DEEPSEEK_REPORT_AUDIT.md)
+- [Reproducible DeepSeek lemma counterexample](experiments/deepseek_lemma_counterexample.py)
 - [2026 claim scan](proof_audit/CLAIM_SCAN_2026.md)
 - [CollatzLayerA axiom audit](proof_audit/AXIOM_AUDIT_COLLATZLAYERA.md)
 - [Mod-4 submission audit](proof_audit/MOD4_SUBMISSION_AUDIT.md)
