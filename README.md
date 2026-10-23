@@ -1,6 +1,6 @@
 # Collatz Conjecture Research
 
-A collaborative, proof-oriented investigation of the Collatz conjecture. The goal is a correct proof or a rigorously verified counterexample—not merely a plausible argument, numerical evidence, or agreement among AI systems.
+A collaborative, proof-oriented investigation of the Collatz conjecture. The goal is a correct proof or a rigorously verified counterexample to the conjecture—not merely a plausible argument, numerical evidence, or agreement among AI systems.
 
 ## Exact statement
 
@@ -15,6 +15,21 @@ The conjecture says that for every integer \(n\ge 1\), there exists \(k\ge 0\) s
 
 The familiar cycle \(1\to4\to2\to1\) is allowed. A proof must cover **every** positive integer.
 
+## Current status
+
+**The classical conjecture remains open in this project.** Our first proof audit found that the public CollatzLayerA v8.1 repository's universally quantified odd_steps_certificate axiom is false, with counterexample \(n=2^{102}-1\). This refutes that submitted proof, not the conjecture. A second advertised proof repository leaves its bridge to universal convergence incomplete in its own proof-status record.
+
+See:
+- [Research status](RESEARCH_STATUS.md)
+- [Agent kickoff and work orders](AGENT_ASSIGNMENTS.md)
+- [Argument ledger](ARGUMENT_LEDGER.md)
+- [2026 claim scan](proof_audit/CLAIM_SCAN_2026.md)
+- [CollatzLayerA axiom audit](proof_audit/AXIOM_AUDIT_COLLATZLAYERA.md)
+- [Mod-4 submission audit](proof_audit/MOD4_SUBMISSION_AUDIT.md)
+- [First mathematical target: universal descent](proofs/TARGET_001_UNIVERSAL_DESCENT.md)
+- [Reproducible counterexample check](experiments/adversarial_certificate_check.py)
+- [GitHub work-order issues](https://github.com/yashmitvats1-hash/Collatz-conjecture/issues)
+
 ## Working principles
 
 1. **Proof over persuasion.** A claimed proof is a draft until every inference and hypothesis has been checked.
@@ -25,18 +40,12 @@ The familiar cycle \(1\to4\to2\to1\) is allowed. A proof must cover **every** po
 6. **Reproducibility.** Code, test ranges, compiler versions, seeds, and machine-checkable certificates must be recorded. Computation supports a finite claim only within its verified scope.
 7. **No false status claims.** Label outputs as idea, conjecture, heuristic, computational observation, conditional theorem, checked lemma, formalized lemma, or complete proof.
 
-## Initial research tracks
+## Current research tracks
 
 - **Track A — accelerated odd map / residue covers:** Study \(S(n)=(3n+1)/2^{v_2(3n+1)}\) on odd positive integers, valuation sequences, modular partitions, and finite certificates for descent.
 - **Track B — descent and induction:** Investigate sufficient conditions such as proving that every \(n>1\) has an iterate below \(n\); make every equivalence and threshold exact.
 - **Track C — analytical / dynamical approaches:** Examine known drift, stopping-time, density, and distribution results; isolate the precise obstacle to upgrading an almost-everywhere result to a universal theorem.
 - **Track D — formal verification and red-team review:** Design machine-checkable representations and adversarially audit every candidate proof.
-
-## Status at project start
-
-**Overall conjecture: OPEN in this research record. No proof or counterexample has been established here.**
-
-Computational verification through a large finite bound is valuable evidence but is not a proof of the universal statement. See `RESEARCH_STATUS.md` and `AGENT_ASSIGNMENTS.md`.
 
 ## What qualifies as a proof submission?
 
