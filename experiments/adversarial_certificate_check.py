@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Reproduce the counterexample to a claimed auxiliary certificate.
+"""Check two explicit counterexamples to a claimed Collatz certificate.
 
-This does NOT disprove the Collatz conjecture. It checks a universally quantified
-axiom used by the public repository AIDoctrine/CollatzLayerA.
+The source axiom currently applies for n >= 2**71. The second test also
+covers a hypothetical stronger lower cutoff n >= 2**109. This finite
+regression supplements (but does not replace) the algebraic parity proof.
+It does NOT disprove the Collatz conjecture.
 """
 
 from __future__ import annotations
@@ -23,29 +25,43 @@ def count_odd_iterates(k: int, n: int) -> int:
     return count
 
 
-def main() -> None:
-    # The alleged axiom applies to every odd n >= 2**71 with n == 3 (mod 4).
-    m = 102
-    n = (1 << m) - 1
-    assert n >= (1 << 71)
+def check_counterexample(label: str, n: int, cutoff: int) -> None:
+    assert n >= cutoff
     assert n % 2 == 1
     assert n % 4 == 3
 
     for k in range(1, 201):
         odd = count_odd_iterates(k, n)
         even = k - odd
-        # The ordinary orbit alternates odd/even for these first 200 steps.
-        assert odd == (k + 1) // 2, (k, odd)
-        assert even == k // 2, (k, even)
-        # Hence no k can meet both requirements in odd_steps_certificate.
-        assert not (odd <= 44 and even >= 71), (k, odd, even)
+        # These inputs alternate parity through all 200 prefix terms.
+        assert odd == (k + 1) // 2, (label, k, odd)
+        assert even == k // 2, (label, k, even)
+        assert not (odd <= 44 and even >= 71), (label, k, odd, even)
 
-    print(f"n = 2^{m} - 1 = {n}")
-    print("Input conditions for the alleged axiom: all satisfied.")
-    print("First 200 iterates: 100 odd and 100 even.")
-    print("No k in [1, 200] satisfies odd <= 44 and even >= 71.")
-    print("PASS: counterexample to the auxiliary certificate found.")
-    print("This is not a counterexample to the Collatz conjecture.")
+    print(f"{label}: n = {n}")
+    print(f"  cutoff satisfied: n >= {cutoff}")
+    print("  first 200 prefix terms alternate parity")
+    print("  no k in [1, 200] has odd <= 44 and even >= 71")
+
+
+def main() -> None:
+    # This is already in the exact source axiom's n >= 2**71 domain.
+    check_counterexample(
+        "Original-domain counterexample",
+        (1 << 102) - 1,
+        1 << 71,
+    )
+
+    # This also defeats a hypothetical variant guarded by n >= 2**109.
+    check_counterexample(
+        "Higher-cutoff counterexample",
+        (1 << 110) - 1,
+        1 << 109,
+    )
+
+    print("PASS: both finite checks reject the claimed certificate.")
+    print("The algebraic family proof establishes the claim for all prefixes.")
+    print("These are counterexamples to the auxiliary axiom, not to Collatz.")
 
 
 if __name__ == "__main__":
