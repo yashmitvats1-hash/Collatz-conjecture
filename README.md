@@ -32,6 +32,8 @@ See:
 - [CollatzLayerA axiom audit](proof_audit/AXIOM_AUDIT_COLLATZLAYERA.md)
 - [Mod-4 submission audit](proof_audit/MOD4_SUBMISSION_AUDIT.md)
 - [First mathematical target: universal descent](proofs/TARGET_001_UNIVERSAL_DESCENT.md)
+- [Arena valuation-descent report review](proofs/ARENA_001_VALUATION_DESCENT.md)
+- [Independent valuation-descent regression checks](experiments/valuation_descent_check.py)
 - [Reproducible CollatzLayerA certificate check](experiments/adversarial_certificate_check.py)
 - [GitHub work-order issues](https://github.com/yashmitvats1-hash/Collatz-conjecture/issues)
 
