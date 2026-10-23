@@ -85,6 +85,22 @@ The paper's ℓ≥2 descent estimate also fails as a general claim. For ℓ=2 an
 
 The direct source inspection supports Claude's main audit. We did not execute Lean locally or run #print axioms E_empty; the source's E_empty proof lies before the later sorry declarations, and a pinned-toolchain compile/axiom report remains a formal reproducibility task.
 
+## Arena's first-round report: valuation words and local descent
+
+Review and coordinator derivations: proofs/ARENA_001_VALUATION_DESCENT_REVIEW.md.
+Independently implemented regression checks: experiments/valuation_descent_check_coordinator.py.
+
+Arena's core caution is correct: a later contraction does not imply an iterate below the original start. The accelerated orbit 7→11→17→13 contracts on the last step but ends above 7.
+
+The following infinite residue classes were proven by explicit arithmetic and independently regression-tested for all odd starts up to 100,000:
+- n≡1 (mod 4), n>1: one accelerated step descends because U(n)≤(3n+1)/4<n.
+- n≡3 (mod 16): two accelerated steps descend.
+- n≡23 (mod 32): three accelerated steps descend.
+
+For n=2^m−1, the first m−1 accelerated valuations are all one and U^j(n)=3^j·2^(m−j)−1>n for 1≤j≤m−1. Hence no strategy using only a fixed, bounded collection of initial valuation-word certificates can itself cover every start. This does not preclude adaptive or unbounded-depth arguments.
+
+Independent regression checks passed for 7,000 tested affine-formula / endpoint-criterion cases, 34,374 starts in the explicit residue classes up to 100,000, and 255 long-run cases through m=256. These are finite tests, not proof of universal convergence. Arena's report also cites 340 valuation words and 540 run-exit samples; the full files it references were not yet present when the repository tree was inspected, so those specific figures and its general run-exit lemma remain pending independent reproduction. Arena has been asked to commit the exact proof and test sources.
+
 ## Current research tracks
 
 1. Find a universal descent lemma for the ordinary Collatz map or the accelerated odd map.
