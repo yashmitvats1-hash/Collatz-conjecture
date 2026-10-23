@@ -101,6 +101,18 @@ For n=2^m−1, the first m−1 accelerated valuations are all one and U^j(n)=3^j
 
 Independent regression checks passed for 7,000 tested affine-formula / endpoint-criterion cases, 34,374 starts in the explicit residue classes up to 100,000, and 255 long-run cases through m=256. These are finite tests, not proof of universal convergence. Arena's report also cites 340 valuation words and 540 run-exit samples; the full files it references were not yet present when the repository tree was inspected, so those specific figures and its general run-exit lemma remain pending independent reproduction. Arena has been asked to commit the exact proof and test sources.
 
+## Gemini's certificate / bounded-horizon audit
+
+Full report audit: proof_audit/GEMINI_REPORT_AUDIT.md. A separate proof of the stopping-time lower bound is in proofs/UNBOUNDED_STOPPING_TIME.md.
+
+The exact CollatzLayerA v8.1 source was fetched directly. Its `odd_steps_certificate` axiom applies to odd `n ≥ 2^71` with `n ≡ 3 (mod 4)`; the axiom does **not** require `n ≥ 2^109`. Thus `n=2^102−1` already lies in its domain and refutes the certificate. The higher input `n=2^110−1` also refutes it and remains useful against any hypothetical variant with an `n ≥ 2^109` guard. The reproducible check at experiments/adversarial_certificate_check.py now tests both cases. This invalidates the proof attempt, not the Collatz conjecture.
+
+A correction to Gemini's report: the claimed universal affine upper bound `(3^u n + 3^u − 2^u)/2^d` is false because the additive contribution depends on the position of even steps in the parity word. For instance, `11→34→17→52→26→13→40` has `u=d=3` among its first six terms, but the claimed right-hand side is `39.5 < 40`. The contraction bridge itself is salvageable with the valid looser estimate `T^K(n) ≤ (3^u/2^d)n + (3^u−1)/2`: when `u≤44,d≥71,n≥2^71`, this is strictly below `n`. The actual obstacle is that the certificate premise is false.
+
+A true general obstruction survives: for odd `n`, let `ν=v₂(n+1)`. The first `2ν` Collatz steps follow an explicit expansion pattern and yield
+`τ(n) ≥ ceil((1+log₂ 3)ν)`,
+where `τ(n` is the first strict-descent time, with `τ=∞` if no strict descent exists. Hence no single finite uniform horizon bounds the time to descent for all starts. This does **not** rule out proofs with an input-dependent horizon and does not show any particular orbit fails to descend; see proofs/UNBOUNDED_STOPPING_TIME.md.
+
 ## Current research tracks
 
 1. Find a universal descent lemma for the ordinary Collatz map or the accelerated odd map.
