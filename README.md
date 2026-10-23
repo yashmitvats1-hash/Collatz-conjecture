@@ -19,15 +19,18 @@ The familiar cycle \(1\to4\to2\to1\) is allowed. A proof must cover **every** po
 
 **The classical conjecture remains open in this project.** Our first proof audit found that the public CollatzLayerA v8.1 repository's universally quantified odd_steps_certificate axiom is false, with counterexample \(n=2^{102}-1\). This refutes that submitted proof, not the conjecture. A second advertised proof repository leaves its bridge to universal convergence incomplete in its own proof-status record.
 
+Our first independent agent report (DeepSeek) supplies a correct exact affine formula for the accelerated odd map but states a descent lemma that is false as written. The counterexample \(n=165\), \(L=17\) has cumulative valuation \(A_{17}=27\) with \(2^{27}>3^{17}\), yet \(U^{17}(165)=167>165\). The additive term in the exact formula cannot be ignored.
+
 See:
 - [Research status](RESEARCH_STATUS.md)
 - [Agent kickoff and work orders](AGENT_ASSIGNMENTS.md)
 - [Argument ledger](ARGUMENT_LEDGER.md)
+- [DeepSeek report audit](proof_audit/DEEPSEEK_REPORT_AUDIT.md)
 - [2026 claim scan](proof_audit/CLAIM_SCAN_2026.md)
 - [CollatzLayerA axiom audit](proof_audit/AXIOM_AUDIT_COLLATZLAYERA.md)
 - [Mod-4 submission audit](proof_audit/MOD4_SUBMISSION_AUDIT.md)
 - [First mathematical target: universal descent](proofs/TARGET_001_UNIVERSAL_DESCENT.md)
-- [Reproducible counterexample check](experiments/adversarial_certificate_check.py)
+- [Reproducible CollatzLayerA certificate check](experiments/adversarial_certificate_check.py)
 - [GitHub work-order issues](https://github.com/yashmitvats1-hash/Collatz-conjecture/issues)
 
 ## Working principles
@@ -42,7 +45,7 @@ See:
 
 ## Current research tracks
 
-- **Track A — accelerated odd map / residue covers:** Study \(S(n)=(3n+1)/2^{v_2(3n+1)}\) on odd positive integers, valuation sequences, modular partitions, and finite certificates for descent.
+- **Track A — accelerated odd map / residue covers:** Study \(U(n)=(3n+1)/2^{v_2(3n+1)}\) on odd positive integers, valuation sequences, modular partitions, and finite certificates for descent.
 - **Track B — descent and induction:** Investigate sufficient conditions such as proving that every \(n>1\) has an iterate below \(n\); make every equivalence and threshold exact.
 - **Track C — analytical / dynamical approaches:** Examine known drift, stopping-time, density, and distribution results; isolate the precise obstacle to upgrading an almost-everywhere result to a universal theorem.
 - **Track D — formal verification and red-team review:** Design machine-checkable representations and adversarially audit every candidate proof.
