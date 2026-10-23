@@ -17,6 +17,10 @@ This ledger is a record of mathematical obligations, not a percentage-complete m
 | L-009 | DeepSeek Lemma 1: exact accelerated iterate formula | **Verified** | proof_audit/DEEPSEEK_REPORT_AUDIT.md. The affine recurrence and formula for S_L are correct. |
 | L-010 | DeepSeek Lemma 2: A_L>L log₂(3) alone guarantees U^L(n)<n | **Refuted** | Counterexample n=165, L=17: A_17=27 and 2^27>3^17, but U^17(165)=167>165. The additive term matters; see the full audit. |
 | L-011 | Arbitrarily long finite runs with v₂(3n+1)=1 are realizable | **Proven** | For any r≥1, n=2^(r+1)−1 has first r accelerated valuations equal to 1. This does not imply a single orbit has infinite such runs or disprove Collatz. |
+| L-012 | E_empty for the simple S-map implies classical Collatz convergence | **False inference** | proof_audit/CLAUDE_REPORT_AUDIT.md. S(n)=(3n+1)/2 eventually becoming even only ends the paired T-step correspondence; the T-orbit must continue from that even value. |
+| L-013 | no_nontrivial_cycles in the Mod-4 Lean source is true as stated | **Refuted** | The statement says collatz^[K] n ≠ n for every n>2 and K>0, contradicted by n=4, K=3 since 4→2→1→4. The declaration contains sorry. |
+| L-014 | The Mod-4 paper's ℓ≥2 next-odd-value descent always holds for sufficiently large n* | **Refuted as a general claim** | For ℓ=2 and n*=4m−1 with odd m≡3 mod 4, the next odd value is (9m−1)/2 = n*+(m+1)/2 > n*. This refutes that descent estimate but does not show these inputs have unbounded orbits. |
+| L-015 | The Mod-4 source proves universal convergence | **Not established** | The main theorem remains sorry and its bridge lemmas are incomplete; the E_empty result is only an auxiliary finite-run fact. See proof_audit/CLAUDE_REPORT_AUDIT.md.
 
 ## Required evidence before upgrading status
 
