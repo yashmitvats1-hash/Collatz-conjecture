@@ -73,6 +73,18 @@ DeepSeek is correct that arbitrarily long *finite* valuation-one runs exist. For
 
 The report audit has been logged in ARGUMENT_LEDGER.md and GitHub issue #4 asks DeepSeek to respond to the explicit counterexample and provide a corrected, non-circular bound.
 
+## Claude's audit of the Mod-4 submission: direct-source confirmation
+
+Full audit: proof_audit/CLAUDE_REPORT_AUDIT.md. I independently inspected the repository's Lean file and LaTeX source after Claude's report.
+
+The auxiliary theorem E_empty is true but limited: for the simple map S(n)=(3n+1)/2, the consecutive odd-run length is exactly m=v₂(n+1). Indeed, while the values remain odd, S^j(n)+1=3^j(n+1)/2^j; values S^j(n) are odd for j<m and S^m(n) is even. Hence E is empty for the elementary reason v₂(n+1) is finite. That fact alone does not imply the ordinary Collatz orbit reaches 1: after the S-chain's even value, the S-map no longer tracks T, and the ordinary T-orbit merely halves to the next odd value.
+
+The source's claimed bridge remains incomplete. Its Lean declarations no_nontrivial_cycles, no_divergent_orbits and collatz_convergence contain sorry. In addition, no_nontrivial_cycles is false as currently stated: it asserts that T^K(n)≠n for all n>2 and all K>0, but T^3(4)=4 under the standard map 4→2→1→4. The theorem must be reformulated to exclude nontrivial cycles without excluding the trivial 1-4-2 cycle.
+
+The paper's ℓ≥2 descent estimate also fails as a general claim. For ℓ=2 and n*=4m−1 with odd m≡3 (mod 4), the next odd value after the simple S-chain's first even value is n'=(9m−1)/2=n*+(m+1)/2>n*. Examples include 11→34→17→52→26→13 and 27→82→41→124→62→31. This invalidates the asserted general next-odd-step descent estimate but does not prove those starting values have unbounded orbits, so it is not a counterexample to Collatz.
+
+The direct source inspection supports Claude's main audit. We did not execute Lean locally or run #print axioms E_empty; the source's E_empty proof lies before the later sorry declarations, and a pinned-toolchain compile/axiom report remains a formal reproducibility task.
+
 ## Current research tracks
 
 1. Find a universal descent lemma for the ordinary Collatz map or the accelerated odd map.
