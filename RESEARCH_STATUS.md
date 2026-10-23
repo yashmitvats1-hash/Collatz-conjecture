@@ -48,6 +48,31 @@ S^j(n)=\frac{3^j(n+1)}{2^j}-1
 \]
 for 0 ≤ j ≤ m, and oddness forces n ≡ −1 (mod 2^{m+1}). Thus a fixed positive integer cannot have an infinite all-odd S-orbit. This only bounds runs in the auxiliary map; it does not prove that the actual Collatz orbit descends, because the artificial S-map and the ordinary map differ once an even S-iterate appears.
 
+## DeepSeek's first report: exact formula and rejected descent lemma
+
+Source artifact: DeepSeek's report supplied on 2026-10-23. Full audit: proof_audit/DEEPSEEK_REPORT_AUDIT.md.
+
+The accelerated iterate identity
+\[
+U^L(n)=\frac{3^L n+S_L}{2^{A_L}},\qquad
+S_L=\sum_{j=0}^{L-1}3^{L-1-j}2^{A_j}
+\]
+is correct for an odd starting value n and the actual valuation sequence.
+
+However, the report's stated Lemma 2—that A_L > L log₂(3) alone ensures U^L(n)<n—is false. The exact criterion is
+\[
+U^L(n)<n\quad\Longleftrightarrow\quad
+S_L<n(2^{A_L}-3^L).
+\]
+The coefficient condition 2^{A_L}>3^L is not enough because S_L is positive.
+
+Explicit counterexample: starting at n=165, the 17 accelerated valuations are
+(4,1,1,1,1,2,2,1,2,1,1,2,1,1,1,2,3), which sum to A₁₇=27. Since 2²⁷=134,217,728 > 3¹⁷=129,140,163, the report's condition holds; nevertheless U¹⁷(165)=167>165. The additive term is larger than the coefficient margin. This refutes the lemma, not the Collatz conjecture.
+
+DeepSeek is correct that arbitrarily long *finite* valuation-one runs exist. For every r≥1, n=2^(r+1)−1 has α₀=...=αᵣ₋₁=1. The exact residue class is n≡−1 (mod 2^(r+1)); its density is 2^(-r) among odd inputs and 2^(-(r+1)) among all positive integers. Such examples do not show that a single trajectory has an infinite run.
+
+The report audit has been logged in ARGUMENT_LEDGER.md and GitHub issue #4 asks DeepSeek to respond to the explicit counterexample and provide a corrected, non-circular bound.
+
 ## Current research tracks
 
 1. Find a universal descent lemma for the ordinary Collatz map or the accelerated odd map.
