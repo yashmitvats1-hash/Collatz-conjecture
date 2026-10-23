@@ -30,6 +30,8 @@ See:
 - [Reproducible DeepSeek lemma counterexample](experiments/deepseek_lemma_counterexample.py)
 - [2026 claim scan](proof_audit/CLAIM_SCAN_2026.md)
 - [CollatzLayerA axiom audit](proof_audit/AXIOM_AUDIT_COLLATZLAYERA.md)
+- [Gemini report audit](proof_audit/GEMINI_REPORT_AUDIT.md)
+- [Proof of unbounded strict-descent stopping times](proofs/UNBOUNDED_STOPPING_TIME.md)
 - [Mod-4 submission audit](proof_audit/MOD4_SUBMISSION_AUDIT.md)
 - [First mathematical target: universal descent](proofs/TARGET_001_UNIVERSAL_DESCENT.md)
 - [Arena valuation-descent report review](proofs/ARENA_001_VALUATION_DESCENT_REVIEW.md)
