@@ -14,11 +14,14 @@ This ledger is a record of mathematical obligations, not a percentage-complete m
 | L-006 | No positive integer's entire S(n)=(3n+1)/2 orbit stays odd | **Auxiliary lemma; formalized in candidate repo** | Potentially useful residue descent for the artificial S-map; it does not alone imply descent under ordinary T. Rebuild/audit theorem and domain independently. |
 | L-007 | Long all-odd runs under S force n≡−1 mod 2^(m+1) | **Proven elementary lemma** | If S^0(n),...,S^m(n) are odd, S^j(n)+1=3^j(n+1)/2^j and therefore 2^(m+1) divides n+1. This rules out an infinite such run for fixed n but gives no universal T-descent. |
 | L-008 | Positive mean/logarithmic drift implies every deterministic orbit descends | **Invalid inference without additional proof** | Average-case distribution estimates do not automatically control every exceptional orbit. Need uniform deterministic bounds or a separate theorem excluding all exceptional orbits. |
+| L-009 | DeepSeek Lemma 1: exact accelerated iterate formula | **Verified** | proof_audit/DEEPSEEK_REPORT_AUDIT.md. The affine recurrence and formula for S_L are correct. |
+| L-010 | DeepSeek Lemma 2: A_L>L log₂(3) alone guarantees U^L(n)<n | **Refuted** | Counterexample n=165, L=17: A_17=27 and 2^27>3^17, but U^17(165)=167>165. The additive term matters; see the full audit. |
+| L-011 | Arbitrarily long finite runs with v₂(3n+1)=1 are realizable | **Proven** | For any r≥1, n=2^(r+1)−1 has first r accelerated valuations equal to 1. This does not imply a single orbit has infinite such runs or disprove Collatz. |
 
 ## Required evidence before upgrading status
 
 - Every theorem statement is copied exactly, including domain, quantifiers, map, and iteration convention.
 - Every dependency is proven or independently cited with hypotheses checked.
-- Every Lean file is checked for axiom, sorryAx, imported assumptions, and the exact target theorem.
+- Every Lean file is checked for axioms, sorryAx, imported assumptions, and the exact target theorem.
 - Computational claims specify executable source, exact limits, integer widths, overflow policy, validation strategy, and reproducibility.
 - A different agent tries to break every candidate proof before it is accepted.
